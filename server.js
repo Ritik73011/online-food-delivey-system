@@ -1,13 +1,13 @@
 const express = require('express');
 const cors = require('cors');
 const dbConnection = require('./configuration/config')
-const app = express();
 
 const signupRoute = require('./controllers/register.controller');
 const loginRoute = require('./controllers/login.controller');
 const categoryRoute = require('./controllers/category.controller');
 const foodsRoute = require('./controllers/food.controller');
 const cartRoute = require('./controllers/cart.controller');
+const app = express();
 
 app.use(express.json());
 app.use(express.static('public'));
