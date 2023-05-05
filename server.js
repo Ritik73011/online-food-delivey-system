@@ -29,11 +29,8 @@ app.use(
 
 
 
-const port = 3001;
 dbConnection().then(() => {
-    app.listen(port, () => {
-        console.log("database is connected and server is listening on http://localhost:3001");
-    })
+    app.listen();
 }).catch((err) => {
     console.log(err);
 })

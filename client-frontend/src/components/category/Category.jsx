@@ -5,15 +5,18 @@ const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 const Category = () => {
   const [cat, setCat] = useState([]);
 
-  const fetchCat = () => {
-    fetch("https://food-app-pt18.onrender.com/category").then((res) => {
-      console.log(res);
+  const fetchCat = async () => {
+    let res = await fetch("https://food-app-pt18.onrender.com/category", {
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      },
     });
+    const data = res.json();
+    console.log(data);
   };
 
   useEffect(() => {
     fetchCat();
-    console.log(api);
   }, []);
   return (
     <div>
