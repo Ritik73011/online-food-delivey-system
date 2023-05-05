@@ -6,7 +6,7 @@ const Category = () => {
   const [cat, setCat] = useState([]);
 
   const fetchCat = () => {
-    fetch(api + "/category").then((res) => {
+    fetch("https://food-app-pt18.onrender.com/category").then((res) => {
       console.log(res);
     });
   };

@@ -20,7 +20,7 @@ app.use(cartRoute);
 
 app.use(
     cors({
-        origin: "http://localhost:3000/",
+        origin: "https://food-app-pt18.onrender.com",
         methods: "GET,POST,PATCH,DELETE",
         credentials: true,
     })
