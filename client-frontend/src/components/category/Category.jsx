@@ -8,7 +8,7 @@ const Category = () => {
   const fetchCat = async () => {
     let res = await fetch("https://food-app-pt18.onrender.com/category", {
       headers: {
-        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Origin": "https://food-app-pt18.onrender.com",
       },
     });
     const data = res.json();

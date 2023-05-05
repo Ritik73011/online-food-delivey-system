@@ -8,7 +8,7 @@ const categoryRoute = require('./controllers/category.controller');
 const foodsRoute = require('./controllers/food.controller');
 const cartRoute = require('./controllers/cart.controller');
 const app = express();
-
+app.use(cors())
 app.use(express.json());
 app.use(express.static('public'));
 
@@ -29,8 +29,11 @@ app.use(
 
 
 
+const port = 3001;
 dbConnection().then(() => {
-    app.listen();
+    app.listen(port, () => {
+        console.log("database is connected and server is listening on http://localhost:3001");
+    })
 }).catch((err) => {
     console.log(err);
 })
