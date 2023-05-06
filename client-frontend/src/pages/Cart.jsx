@@ -1,11 +1,20 @@
-import { Box, Button, Divider, Typography, useMediaQuery } from "@mui/material";
+import {
+  Box,
+  Button,
+  Divider,
+  Skeleton,
+  Typography,
+  useMediaQuery,
+} from "@mui/material";
 import React, { useEffect, useState } from "react";
 import CloseIcon from "@mui/icons-material/Close";
 import { useNavigate } from "react-router";
+import Skeloton from "../components/skelton/Skeloton";
 const Cart = () => {
   const media768 = useMediaQuery("(max-width:768px)");
   const [cartData, setCartData] = useState([]);
   const [quan, setQuan] = useState();
+  const [bool, setBool] = useState(true);
   const navigate = useNavigate();
   const fetchCartItem = () => {
     fetch("https://food-app-pt18.onrender.com/cart", {
@@ -18,6 +27,7 @@ const Cart = () => {
         if (localStorage.getItem("foodApp")) {
           setCartData(data.cartItems);
         }
+        setBool(false);
         console.log(data.cartItems);
       });
     });
@@ -215,9 +225,23 @@ const Cart = () => {
               })
             ) : (
               <Box>
-                {localStorage.getItem("foodApp")
-                  ? "No Item Found"
-                  : "NO ITEM AVAILABLE"}
+                {!localStorage.getItem("foodApp") ? (
+                  "No Item Found"
+                ) : bool ? (
+                  <Skeleton
+                    sx={{
+                      maxWidth: "1300px",
+                      width: "100%",
+                      display: "block",
+                      margin: "auto",
+                      height: "80px",
+                    }}
+                  />
+                ) : cartData ? (
+                  <Skeloton />
+                ) : (
+                  "No Item Found"
+                )}
               </Box>
             )}
             {/*CART SINGLE PRODUCT END */}

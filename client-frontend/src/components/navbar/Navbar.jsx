@@ -44,15 +44,13 @@ const Navbar = () => {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        {["All Foods", "Cart", "Profile", "About Us", "Contcat Us"].map(
-          (text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton onClick={() => handleClick(text)}>
-                <ListItemText primary={text} />
-              </ListItemButton>
-            </ListItem>
-          )
-        )}
+        {["All Foods", "Cart", "Profile", "About Us"].map((text, index) => (
+          <ListItem key={text} disablePadding>
+            <ListItemButton onClick={() => handleClick(text)}>
+              <ListItemText primary={text} />
+            </ListItemButton>
+          </ListItem>
+        ))}
       </List>
     </Box>
   );
@@ -107,9 +105,6 @@ const Navbar = () => {
         </IconButton>
         <IconButton onClick={() => handleClick("About Us")}>
           <Typography sx={{ color: "white" }}>About Us </Typography>
-        </IconButton>
-        <IconButton onClick={() => handleClick("Contact Us")}>
-          <Typography sx={{ color: "white" }}>Contact Us </Typography>
         </IconButton>
       </Box>
 
