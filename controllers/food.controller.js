@@ -21,6 +21,7 @@ route.get('/foods', async (req, res) => {
 
 //GET FOODS BY CATEGORY
 route.get('/foods/:cat', async (req, res) => {
+    console.log("first")
     try {
         const foods = await FoodsModel.find({ category: req.params.cat });
         return res.status(200).send({
@@ -34,9 +35,9 @@ route.get('/foods/:cat', async (req, res) => {
 });
 
 //get foods by id
-route.get('/foods/:id', async (req, res) => {
+route.get('/food/:id', async (req, res) => {
     try {
-        const foods = await FoodsModel.findOne({ _id: req.params.id });
+        const foods = await FoodsModel.find({ _id: req.params.id });
         return res.status(200).send({
             foods: foods
         })
