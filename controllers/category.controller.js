@@ -36,4 +36,19 @@ route.post('/category', async (req, res) => {
     }
 })
 
+//delete cat
+route.delete('/category/:id', async (req, res) => {
+    const id = req.params.id;
+    try {
+        await categoryModel.findByIdAndDelete({ _id: id });
+        return res.status(200).send({
+            message: "removed from category..."
+        })
+    } catch (error) {
+        return res.status(500).send({
+            message: "internal server error"
+        })
+    }
+})
+
 module.exports = route;
