@@ -4,20 +4,12 @@ const OrderModel = require('../models/order.model');
 const { getUserId } = require('../validation/user.middleware');
 
 //Adding Food to user Order section
-route.post('/order', getUserId, async (req, res) => {
-    const uid = req.user_id;
-    const { title, image, desc, price, quantity } = req.body;
+route.post('/order', async (req, res) => {
+
+    const body = req.body;
 
     try {
-        const obj = {
-            userId: uid,
-            title: title,
-            image: image,
-            desc: desc,
-            price: price,
-            quantity: quantity
-        }
-        await OrderModel.create(obj);
+        await OrderModel.insertMany(body);
         return res.status(200).send({
             message: "added to your order page..."
         })
