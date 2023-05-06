@@ -80,7 +80,6 @@ route.delete('/deletemany', getUserId, async (req, res) => {
     }
 })
 
-
 //update cart items
 route.patch('/cart/:id', async (req, res) => {
     const id = req.params.id;
