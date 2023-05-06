@@ -59,14 +59,30 @@ route.get('/get-user-info', VerifyUser, async (req, res) => {
     });
 })
 
+//get all users
+route.get('/get-users', async (req, res) => {
+    try {
+        const users = await userModel.find();
+        return res.status(200).send({
+            users: users
+        })
+    } catch (error) {
+        return res.status(500).send({
+            message: "internal server error"
+        })
+    }
+
+})
+
 // Updating user info
 route.patch('/update-user', getUserId, async (req, res) => {
     const userId = req.user_id;
     const name = validateName(req.body.name);
 
     if (name == "")
-        return res.status(400).send({
-            message: "name should be atleast 3 character..."
+        return res.status(200).send({
+            message: "updated successfully...",
+            token: token
         })
 
     try {
@@ -84,22 +100,4 @@ route.patch('/update-user', getUserId, async (req, res) => {
     }
 })
 
-//updating user premium account
-/*route.patch('/update-premium',getUserId,async(req,res)=>{
-    const userId = req.user_id;
-    try {
-        await userModel.findByIdAndUpdate(userId,{premium:true});
-        const checkUser = await userModel.findById(userId);
-        const token = jwt.sign({user_id:checkUser._id,name:checkUser.name,email:checkUser.email,premium:checkUser.premium}, process.env.PRIVATE_KEY);
-        return res.status(200).send({
-            message:"premium added successfully...",
-            token:token
-        })
-    } catch (error) {
-        return res.status(500).send({
-            message:"internal server error"
-        })
-    }
-})
-*/
 module.exports = route;
