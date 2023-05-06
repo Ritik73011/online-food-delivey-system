@@ -19,6 +19,10 @@ const Navbar = () => {
     navigate("/");
   };
 
+  const handleClick = (text) => {
+    const route = text.replace(" ", "-").toLowerCase();
+    navigate("/" + route);
+  };
   //Drawer Code START
   const [state, setState] = React.useState(false);
 
@@ -43,7 +47,7 @@ const Navbar = () => {
         {["All Foods", "Cart", "Profile", "About Us", "Contcat Us"].map(
           (text, index) => (
             <ListItem key={text} disablePadding>
-              <ListItemButton>
+              <ListItemButton onClick={() => handleClick(text)}>
                 <ListItemText primary={text} />
               </ListItemButton>
             </ListItem>
@@ -92,19 +96,19 @@ const Navbar = () => {
           alignItems: "center",
         }}
       >
-        <IconButton>
+        <IconButton onClick={() => handleClick("All Foods")}>
           <Typography sx={{ color: "white" }}>All Foods </Typography>
         </IconButton>
-        <IconButton>
+        <IconButton onClick={() => handleClick("Cart")}>
           <Typography sx={{ color: "white" }}>Cart </Typography>
         </IconButton>
-        <IconButton>
+        <IconButton onClick={() => handleClick("Profile")}>
           <Typography sx={{ color: "white" }}>Profile </Typography>
         </IconButton>
-        <IconButton>
+        <IconButton onClick={() => handleClick("About Us")}>
           <Typography sx={{ color: "white" }}>About Us </Typography>
         </IconButton>
-        <IconButton>
+        <IconButton onClick={() => handleClick("Contact Us")}>
           <Typography sx={{ color: "white" }}>Contact Us </Typography>
         </IconButton>
       </Box>

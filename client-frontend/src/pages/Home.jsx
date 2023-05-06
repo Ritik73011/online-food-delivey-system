@@ -1,5 +1,6 @@
 import banner from "../assests/banner.jpg";
 import Category from "../components/category/Category";
+import PopularProducts from "../components/popular-product/PopularProducts";
 const Home = () => {
   return (
     <div>
@@ -7,6 +8,7 @@ const Home = () => {
         <img src={banner} width={"100%"} alt="banner" />
       </div>
       <Category />
+      <PopularProducts />
     </div>
   );
 };
