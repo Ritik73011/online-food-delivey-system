@@ -74,6 +74,21 @@ route.get('/get-users', async (req, res) => {
 
 })
 
+//delete users
+route.delete('/deleteusers/:id', async (req, res) => {
+    const id = req.params.id;
+    try {
+        await userModel.findByIdAndDelete({ _id: id });
+        return res.status(200).send({
+            message: "user removed..."
+        })
+    } catch (error) {
+        return res.status(500).send({
+            message: "internal server error"
+        })
+    }
+})
+
 // Updating user info
 route.patch('/update-user', getUserId, async (req, res) => {
     const userId = req.user_id;
