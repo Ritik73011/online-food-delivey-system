@@ -8,11 +8,13 @@ route.post('/cart', getUserId, async (req, res) => {
     const uid = req.user_id;
     const { title, image, desc, price, quantity } = req.body;
     try {
-        const avilable = await CartModel.findOne({ title: title });
-        if (avilable)
+        const avilable = await CartModel.findOne({ userId: uid, title: title });
+        if (avilable) {
+            await CartModel.updateOne({ userId: uid, quantity: quantity + 1 })
             return res.status(200).send({
                 message: "already added.."
             })
+        }
         const obj = {
             userId: uid,
             title: title,
