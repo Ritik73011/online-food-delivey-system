@@ -6,9 +6,9 @@ const { getUserId } = require('../validation/user.middleware');
 //Adding Food to user Order section
 route.post('/order', async (req, res) => {
 
-    const { data } = req.body;
+    let body = req.body;
     try {
-        await OrderModel.insertMany(data);
+        await OrderModel.insertMany(body);
         return res.status(200).send({
             message: "added to your order page..."
         })
