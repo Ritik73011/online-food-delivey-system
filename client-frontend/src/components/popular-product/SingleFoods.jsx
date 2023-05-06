@@ -7,7 +7,7 @@ const SingleFoods = ({ data }) => {
   const media449 = useMediaQuery("(max-width:449px)");
   //GO TO PRODUCT DESC
   const goToDescription = () => {
-    navigate(`/all-foods/${data._id}`);
+    navigate(`/all-foods/${data.category.toLowerCase()}/${data._id}`);
   };
 
   return (
