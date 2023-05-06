@@ -50,11 +50,12 @@ route.get('/cart', getUserId, async (req, res) => {
 });
 
 //delete food from cart
-route.delete('/cart/:id', async (req, res) => {
+route.delete('/cart/:id', getUserId, async (req, res) => {
     const id = req.params.id;
+    const uid = req.user_id;
 
     try {
-        await CartModel.findByIdAndDelete({ _id: id });
+        await CartModel.findByIdAndDelete({ userId: uid, _id: id });
         return res.status(200).send({
             message: "removed from your cart..."
         })
@@ -67,11 +68,12 @@ route.delete('/cart/:id', async (req, res) => {
 
 
 //update cart items
-route.patch('/cart/:id', async (req, res) => {
+route.patch('/cart/:id', getUserId, async (req, res) => {
     const id = req.params.id;
+    const uid = req.user_id;
     const { quantity } = req.body;
     try {
-        await CartModel.findByIdAndUpdate(id, { quantity: quantity });
+        await CartModel.findByIdAndUpdate({ userId: uid, _id: id }, { quantity: quantity });
         return res.status(200).send({
             message: "updated successfully...",
         })
