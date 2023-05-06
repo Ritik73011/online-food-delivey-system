@@ -88,7 +88,7 @@ export default function Login() {
           onChange={(event) => setPassword(event.target.value)}
         />
         <button type="submit">Login</button>
-        <p style={{ textAlign: "left" }}>
+        <p style={{ textAlign: "left", marginTop: "8px" }}>
           Don't have an account ?
           <span
             style={{ cursor: "pointer", color: "blue" }}
