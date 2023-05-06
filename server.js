@@ -7,6 +7,7 @@ const loginRoute = require('./controllers/login.controller');
 const categoryRoute = require('./controllers/category.controller');
 const foodsRoute = require('./controllers/food.controller');
 const cartRoute = require('./controllers/cart.controller');
+const orderRoute = require('./controllers/order.controller');
 const app = express();
 app.use(cors())
 app.use(express.json());
@@ -17,6 +18,7 @@ app.use(loginRoute);
 app.use(categoryRoute);
 app.use(foodsRoute);
 app.use(cartRoute);
+app.use(orderRoute);
 
 app.use(
     cors({
