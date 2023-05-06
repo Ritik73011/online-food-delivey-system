@@ -96,4 +96,18 @@ route.patch('/update-foods', async (req, res) => {
     }
 })
 
+//delete food
+route.delete('/foodsdelete/:id', async (req, res) => {
+    const id = req.params.id;
+    try {
+        await FoodsModel.findByIdAndDelete({ _id: id });
+        return res.status(200).send({
+            message: "removed from foods..."
+        })
+    } catch (error) {
+        return res.status(500).send({
+            message: "internal server error"
+        })
+    }
+})
 module.exports = route;
