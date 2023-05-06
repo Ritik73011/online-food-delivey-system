@@ -66,6 +66,20 @@ route.delete('/cart/:id', getUserId, async (req, res) => {
     }
 })
 
+route.delete('/deletemany', getUserId, async (req, res) => {
+    const uid = req.user_id;
+    try {
+        await CartModel.deleteMany({ userId: uid });
+        return res.status(200).send({
+            message: "removed from your cart..."
+        })
+    } catch (error) {
+        return res.status(500).send({
+            message: "internal server error"
+        })
+    }
+})
+
 
 //update cart items
 route.patch('/cart/:id', async (req, res) => {
