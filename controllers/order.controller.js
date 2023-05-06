@@ -4,13 +4,13 @@ const OrderModel = require('../models/order.model');
 const { getUserId } = require('../validation/user.middleware');
 
 //Adding Food to user Order section
-route.post('/order', async (req, res) => {
-
-    const { title, userId, image, desc, price, quantity } = req.body;
+route.post('/order', getUserId, async (req, res) => {
+    const uid = req.user_id;
+    const { title, image, desc, price, quantity } = req.body;
 
     try {
         const obj = {
-            userId: userId,
+            userId: uid,
             title: title,
             image: image,
             desc: desc,
