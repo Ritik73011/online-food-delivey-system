@@ -89,7 +89,7 @@ const Navbar = () => {
           sx={{ color: "white", cursor: "pointer" }}
           onClick={navigateToHome}
         >
-          Online Food<span style={{ color: "orangered" }}>Delivery</span>
+          Online Food <span style={{ color: "orangered" }}>Delivery</span>
         </Typography>
       </Box>
 
