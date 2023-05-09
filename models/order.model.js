@@ -6,7 +6,8 @@ const OrderSchema = mg.Schema({
     image: String,
     desc: String,
     price: Number,
-    quantity: Number
+    quantity: Number,
+    date: String
 })
 const OrderModel = mg.model('order', OrderSchema);
 module.exports = OrderModel;
