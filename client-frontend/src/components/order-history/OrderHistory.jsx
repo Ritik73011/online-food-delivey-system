@@ -89,7 +89,8 @@ const OrderHistory = () => {
                               marginTop: "12px",
                             }}
                           >
-                            Order Date: {ele.date ? ele.date : "null"}
+                            Order Date:{" "}
+                            {ele.date ? ele.date.substring(0, 10) : "null"}
                           </Typography>
                         </Box>
 
