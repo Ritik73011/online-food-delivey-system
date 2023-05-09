@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import { useNavigate } from "react-router";
 import MenuIcon from "@mui/icons-material/Menu";
-import React from "react";
+import React, { useEffect } from "react";
 const Navbar = () => {
   const media768 = useMediaQuery("(max-width:768px)");
   const navigate = useNavigate();
@@ -25,6 +25,7 @@ const Navbar = () => {
   };
   //Drawer Code START
   const [state, setState] = React.useState(false);
+  const [route, setRoute] = React.useState("");
 
   const toggleDrawer = (anchor, open) => (event) => {
     if (
@@ -57,6 +58,9 @@ const Navbar = () => {
     </Box>
   );
 
+  useEffect(() => {
+    setRoute(window.location.pathname);
+  }, [window.location.pathname]);
   //Drawer Code END
   return (
     <Box
@@ -96,19 +100,49 @@ const Navbar = () => {
           alignItems: "center",
         }}
       >
-        <IconButton onClick={() => handleClick("All Foods")}>
+        <IconButton
+          sx={{
+            border: route === "/all-foods" && "0.5px solid lightblue",
+            borderRadius: route === "/all-foods" && "8px",
+          }}
+          onClick={() => handleClick("All Foods")}
+        >
           <Typography sx={{ color: "white" }}>All Foods </Typography>
         </IconButton>
-        <IconButton onClick={() => handleClick("Cart")}>
+        <IconButton
+          sx={{
+            border: route === "/cart" && "0.5px solid lightblue",
+            borderRadius: route === "/cart" && "8px",
+          }}
+          onClick={() => handleClick("Cart")}
+        >
           <Typography sx={{ color: "white" }}>Cart </Typography>
         </IconButton>
-        <IconButton onClick={() => handleClick("Profile")}>
+        <IconButton
+          sx={{
+            border: route === "/profile" && "0.5px solid lightblue",
+            borderRadius: route === "/profile" && "8px",
+          }}
+          onClick={() => handleClick("Profile")}
+        >
           <Typography sx={{ color: "white" }}>Profile </Typography>
         </IconButton>
-        <IconButton onClick={() => handleClick("About Us")}>
+        <IconButton
+          sx={{
+            border: route === "/about-us" && "0.5px solid lightblue",
+            borderRadius: route === "/about-us" && "8px",
+          }}
+          onClick={() => handleClick("About Us")}
+        >
           <Typography sx={{ color: "white" }}>About Us </Typography>
         </IconButton>
-        <IconButton onClick={() => handleClick("admin")}>
+        <IconButton
+          sx={{
+            border: route === "/admin" && "0.5px solid lightblue",
+            borderRadius: route === "/admin" && "8px",
+          }}
+          onClick={() => handleClick("admin")}
+        >
           <Typography sx={{ color: "white" }}>Admin </Typography>
         </IconButton>
       </Box>

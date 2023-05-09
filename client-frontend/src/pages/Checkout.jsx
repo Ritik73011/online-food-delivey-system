@@ -36,7 +36,9 @@ export default function Checkout() {
       headers: {
         "Content-Type": "Application/json",
       },
-      body: JSON.stringify(cartData),
+      body: JSON.stringify(
+        cartData.map((ele) => ({ ...ele, date: new Date() }))
+      ),
     }).then((responce) => {
       responce.json().then((data) => {
         if (data.message === "added to your order page...") {

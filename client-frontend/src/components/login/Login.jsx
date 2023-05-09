@@ -9,6 +9,7 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorText, setErrorText] = useState("");
+  const [color, setColor] = useState("");
   const [open, setOpen] = useState(false);
   const naviaget = useNavigate();
   const { updateLoginStatus } = useContext(contextData);
@@ -30,6 +31,7 @@ export default function Login() {
         if (msg.token) {
           localStorage.setItem("foodApp", msg.token);
           setErrorText("Login Success...");
+          setColor("green");
           setOpen(true);
           updateLoginStatus(true);
           setTimeout(() => {
@@ -38,6 +40,7 @@ export default function Login() {
           }, 3000);
         }
         setErrorText(msg.message);
+        setColor("#f54f43");
         setOpen(true);
       });
     });
@@ -108,7 +111,12 @@ export default function Login() {
           anchorOrigin={{ vertical: "top", horizontal: "center" }}
           message={errorText}
           action={action}
-          sx={{ backgroundColor: "lightgreen", color: "#fff" }}
+          sx={{
+            "& .css-1eqdgzv-MuiPaper-root-MuiSnackbarContent-root": {
+              background: color,
+            },
+            fontWeight: "bolder",
+          }}
         />
         {/*Toast Alert Message */}
       </form>

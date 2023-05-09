@@ -9,6 +9,7 @@ export default function Signup() {
   const [password, setPassword] = useState("");
   const [errorText, setErrorText] = useState("");
   const [open, setOpen] = useState(false);
+  const [color, setColor] = useState("");
   const navigate = useNavigate();
   //Creating account
   const handleSubmit = (event) => {
@@ -29,6 +30,7 @@ export default function Signup() {
         console.log(msg);
         if (msg.message === "signup successfully...") {
           setErrorText(msg.message);
+          setColor("green");
           setOpen(true);
           setTimeout(() => {
             setOpen(false);
@@ -36,6 +38,7 @@ export default function Signup() {
           }, 3000);
         }
         setErrorText(msg.message);
+        setColor("#f54f43");
         setOpen(true);
       });
     });
@@ -105,7 +108,12 @@ export default function Signup() {
         anchorOrigin={{ vertical: "top", horizontal: "center" }}
         message={errorText}
         action={action}
-        sx={{ color: "#fff" }}
+        sx={{
+          "& .css-1eqdgzv-MuiPaper-root-MuiSnackbarContent-root": {
+            background: color,
+          },
+          fontWeight: "bolder",
+        }}
       />
       {/*Toast Alert Message */}
     </div>

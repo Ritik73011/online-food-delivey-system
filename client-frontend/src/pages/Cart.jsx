@@ -97,6 +97,11 @@ const Cart = () => {
       alert("please add some foods");
     }
   };
+
+  //add more foods
+  const addMoreFoods = () => {
+    navigate("/all-foods");
+  };
   useEffect(() => {
     fetchCartItem();
   }, [quan, window.location]);
@@ -301,6 +306,18 @@ const Cart = () => {
               onClick={checkout}
             >
               CHECKOUT
+            </Button>
+            <Button
+              sx={{
+                background: "blue",
+                width: "100%",
+                color: "#fff",
+                ":hover": { background: "#6c63ed" },
+                marginTop: "8px",
+              }}
+              onClick={addMoreFoods}
+            >
+              ADD MORE FOODS
             </Button>
           </Box>
           {/*AMOUNT DETAILS END */}

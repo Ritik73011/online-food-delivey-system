@@ -20,6 +20,7 @@ const FoodsPage = () => {
   const { cat } = useParams();
   //Main DATA STATE
   const [tempProduct, setTempProduct] = useState([]);
+  const [bool, setBool] = useState(false);
   //SORTING
   const hanldeSort = (val) => {
     if (val === "lth") {
@@ -55,7 +56,10 @@ const FoodsPage = () => {
         setTempProduct(filter);
       }
     }
-  }, [foods]);
+    setTimeout(() => {
+      setBool(true);
+    }, 7000);
+  }, [foods, cat]);
 
   return (
     <Box>
@@ -79,9 +83,9 @@ const FoodsPage = () => {
           onChange={(e) => hanldeSort(e.target.value)}
           style={{ padding: "8px" }}
         >
-          <option value="">--sorting--</option>
-          <option value="lth">Sort Low To High</option>
-          <option value="htl">Sort High To Low</option>
+          <option value="">--Sort By Price--</option>
+          <option value="lth">Price Low To High</option>
+          <option value="htl">Price High To Low</option>
         </select>
       </Box>
       {/*FILTER OPTIONS END */}
@@ -98,13 +102,17 @@ const FoodsPage = () => {
           gap: media600 ? "8px" : "16px",
         }}
       >
-        {tempProduct.length > 0
-          ? tempProduct.map((ele, idx) => {
-              return <SingleFood key={idx + 1} data={ele} />;
-            })
-          : arr.map((ele) => {
-              return <Skeleton key={ele} height={"300px"} width={"200px"} />;
-            })}
+        {tempProduct.length > 0 ? (
+          tempProduct.map((ele, idx) => {
+            return <SingleFood key={idx + 1} data={ele} />;
+          })
+        ) : bool ? (
+          <Box>No product Found</Box>
+        ) : (
+          arr.map((ele) => {
+            return <Skeleton key={ele} height={"300px"} width={"200px"} />;
+          })
+        )}
       </Box>
     </Box>
   );

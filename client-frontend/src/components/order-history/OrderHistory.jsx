@@ -65,32 +65,64 @@ const OrderHistory = () => {
                         alt=""
                       />
                       <Box sx={{ width: "100%" }}>
-                        <Typography
-                          fontSize={"'Poppins',sans-serif"}
+                        <Box
                           sx={{
-                            fontWeight: "600",
-                            textTransform: "capitalize",
-                            marginTop: "12px",
+                            display: "flex",
+                            justifyContent: "space-between",
                           }}
                         >
-                          {ele.title}
-                        </Typography>
+                          <Typography
+                            fontSize={"'Poppins',sans-serif"}
+                            sx={{
+                              fontWeight: "600",
+                              textTransform: "capitalize",
+                              marginTop: "12px",
+                            }}
+                          >
+                            {ele.title}
+                          </Typography>
+                          <Typography
+                            fontSize={"'Poppins',sans-serif"}
+                            sx={{
+                              fontWeight: "400",
+                              textTransform: "capitalize",
+                              marginTop: "12px",
+                            }}
+                          >
+                            Order Date: {ele.date ? ele.date : "null"}
+                          </Typography>
+                        </Box>
 
                         <Box
                           sx={{
                             display: "grid",
-                            justifyContent: "space-between",
                             margin: "10px 0",
                           }}
                         >
-                          <Typography
+                          <Box
                             sx={{
-                              fontFamily: "'Poppins',sans-serif",
-                              fontWeight: "500",
+                              width: "100%",
+                              display: "flex",
+                              justifyContent: "space-between",
                             }}
                           >
-                            ₹{ele.price}
-                          </Typography>
+                            <Typography
+                              sx={{
+                                fontFamily: "'Poppins',sans-serif",
+                                fontWeight: "500",
+                              }}
+                            >
+                              ₹{ele.price}
+                            </Typography>
+                            <Typography
+                              sx={{
+                                fontFamily: "'Poppins',sans-serif",
+                                fontWeight: "600",
+                              }}
+                            >
+                              Total: ₹{+ele.price * ele.quantity}
+                            </Typography>
+                          </Box>
                           <Typography
                             sx={{
                               fontFamily: "'Poppins',sans-serif",
