@@ -12,6 +12,7 @@ import {
 import { useNavigate } from "react-router";
 import MenuIcon from "@mui/icons-material/Menu";
 import React, { useEffect } from "react";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 const Navbar = () => {
   const media768 = useMediaQuery("(max-width:768px)");
   const navigate = useNavigate();
@@ -116,6 +117,7 @@ const Navbar = () => {
           }}
           onClick={() => handleClick("Cart")}
         >
+          <ShoppingCartIcon sx={{ color: "white", alignItems: "center" }} />
           <Typography sx={{ color: "white" }}>Cart </Typography>
         </IconButton>
         <IconButton

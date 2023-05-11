@@ -96,7 +96,15 @@ export default function Signup() {
           required
           value={password}
           minLength={6}
-          onChange={(event) => setPassword(event.target.value)}
+          onChange={(event) => {
+            setPassword(event.target.value);
+            event.target.setCustomValidity("");
+          }}
+          onInvalid={(e) =>
+            e.target.setCustomValidity(
+              "Password must me greater than 5 character"
+            )
+          }
         />
         <button type="submit">Signup</button>
       </form>
