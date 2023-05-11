@@ -41,7 +41,6 @@ const AdminLogin = () => {
           name="password"
           required
           value={password}
-          minLength={6}
           onChange={(event) => setPassword(event.target.value)}
         />
         <button type="submit">Login</button>
