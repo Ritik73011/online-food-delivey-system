@@ -7,7 +7,11 @@ const OrderSchema = mg.Schema({
     desc: String,
     price: Number,
     quantity: Number,
-    date: String
+    date: String,
+    name: String,
+    phone: String,
+    pinCode: String,
+    address: String
 })
 const OrderModel = mg.model('order', OrderSchema);
 module.exports = OrderModel;
