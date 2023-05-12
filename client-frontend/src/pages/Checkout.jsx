@@ -37,7 +37,14 @@ export default function Checkout() {
         "Content-Type": "Application/json",
       },
       body: JSON.stringify(
-        cartData.map((ele) => ({ ...ele, date: new Date() }))
+        cartData.map((ele) => ({
+          ...ele,
+          date: new Date(),
+          name: name,
+          phone: phone,
+          pinCode: pincode,
+          address: address,
+        }))
       ),
     }).then((responce) => {
       responce.json().then((data) => {
