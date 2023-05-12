@@ -77,7 +77,7 @@ route.post('/foods', async (req, res) => {
 route.patch('/update-foods/:id', async (req, res) => {
     const id = req.params.id;
     try {
-        await FoodsModel.findByIdAndUpdate(foodId, req.body);
+        await FoodsModel.findByIdAndUpdate(id, req.body);
         return res.status(200).send({
             message: "updated successfully...",
         })
