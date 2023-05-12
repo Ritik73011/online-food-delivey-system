@@ -75,14 +75,13 @@ route.post('/foods', async (req, res) => {
 //UPDATE FOOD FROM ADMIN PANEL
 
 route.patch('/update-foods', async (req, res) => {
-    const { title, image, desc, price, category, foodId } = req.body;
+    const { title, image, desc, price, foodId } = req.body;
 
     const obj = {
         title: title,
         image: image,
         desc: desc,
         price: price,
-        category: category,
     }
     try {
         await FoodsModel.findByIdAndUpdate(foodId, obj);
