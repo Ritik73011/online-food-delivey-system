@@ -34,6 +34,19 @@ route.get('/order', getUserId, async (req, res) => {
         })
     }
 });
+//getting all orders
+route.get('/get-all-orders', async (req, res) => {
+    try {
+        const orderItem = await OrderModel.find();
+        return res.status(200).send({
+            orderItem: orderItem
+        })
+    } catch (error) {
+        return res.status(500).send({
+            message: "internal server error"
+        })
+    }
+});
 
 
 module.exports = route;
